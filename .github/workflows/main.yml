@@ -4,7 +4,7 @@ on:
   schedule:
     # Bu ayar her sabah TR saatiyle 06:00'da çalışır (UTC 03:00)
     # Almanya saati kışın UTC+1, yazın UTC+2 olduğu için saat kayabilir.
-    - cron: '0 4 * * *' 
+    - cron: '0 6 * * *'
   workflow_dispatch: # Bu satır, "Manuel Çalıştır" butonu ekler (Test için)
 
 jobs:

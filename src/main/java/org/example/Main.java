@@ -1,26 +1,32 @@
 package org.example;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Main {
     public static void main(String[] args) {
         String botToken = System.getenv("TELEGRAM_TOKEN");
         String chatId = System.getenv("TELEGRAM_CHAT_ID");
-        String city = "Krefeld"; // Şehrini buradan güncelleyebilirsin
 
-        // Krefeld Koordinatları (Hava durumu için hassas veri)
+        String city = "Krefeld";
         String lat = "51.33";
         String lon = "6.56";
 
         try {
-            // 1. Namaz Vakitlerini Çek (Diyanet Metodu)
+            // 1. Namaz Vakitlerini Çek
             String prayerJson = getHTML("https://api.aladhan.com/v1/timingsByCity?city=" + city + "&country=Germany&method=13");
 
-            // 2. Hava Durumunu Çek (Open-Meteo)
+            // 2. Hava Durumunu Çek
             String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
+
+            // 3. Sınav Geri Sayımı (Hedef: 28.04.2026)
+            LocalDate bugun = LocalDate.now();
+            LocalDate sinavTarihi = LocalDate.of(2026, 4, 28);
+            long gunKaldi = ChronoUnit.DAYS.between(bugun, sinavTarihi);
 
             // Verileri Ayıkla
             String fajr = getValue(prayerJson, "Fajr");
@@ -28,28 +34,27 @@ public class Main {
             String asr = getValue(prayerJson, "Asr");
             String maghrib = getValue(prayerJson, "Maghrib");
             String isha = getValue(prayerJson, "Isha");
-
-            // Hava Durumu Verileri
             String temp = getSimpleValue(weatherJson, "temperature");
-            String wind = getSimpleValue(weatherJson, "windspeed");
 
-            // Mesajı Oluştur
-            String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            // Mesaj Formatı
+            String dateStr = bugun.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             String message = String.format(
-                    "📅 *%s - %s Özeti*\n\n" +
-                            "☁️ *Hava Durumu:* %s°C\n" +
-                            "💨 *Rüzgar:* %s km/s\n\n" +
-                            "🕋 *Namaz Vakitleri:*\n" +
+                    "📅 *%s - Günlük Bilgilendirme*\n\n" +
+                            "🎯 *SINAV DURUMU*\n" +
+                            "🏁 Büyük sınava tam *%d gün* kaldı!\n" +
+                            "🚀 Odaklanmaya devam et.\n\n" +
+                            "☁️ *Hava Durumu:* %s°C\n\n" +
+                            "🕋 *Namaz Vakitleri (%s):*\n" +
                             "🌅 İmsak: %s\n" +
                             "📅 Öğle: %s\n" +
                             "🕌 İkindi: %s\n" +
                             "🌆 Akşam: %s\n" +
                             "🌙 Yatsı: %s",
-                    date, city, temp, wind, fajr, dhuhr, asr, maghrib, isha
+                    dateStr, gunKaldi, temp, city, fajr, dhuhr, asr, maghrib, isha
             );
 
             sendTelegram(botToken, chatId, message);
-            System.out.println("Hava durumu ve vakitler gönderildi!");
+            System.out.println("Sınav geri sayımı ve vakitler gönderildi!");
 
         } catch (Exception e) {
             e.printStackTrace();

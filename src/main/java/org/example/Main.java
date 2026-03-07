@@ -26,12 +26,31 @@ public class Main {
                     .get("timings").getAsJsonObject();
 
             // 2. Hava Durumunu Çek
-            String weatherRaw = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
-            JsonObject weatherCurrent = JsonParser.parseString(weatherRaw).getAsJsonObject()
-                    .get("current_weather").getAsJsonObject();
+            String weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + lat +
+                    "&longitude=" + lon + "&current_weather=true";
 
-            // 3. Verileri GSON ile Güvenli Şekilde Al
+            String weatherRaw = getHTML(weatherUrl);
+
+            JsonObject weatherRoot;
+            try {
+                weatherRoot = JsonParser.parseString(weatherRaw).getAsJsonObject();
+            } catch (Exception e) {
+                throw new RuntimeException("Hava durumu API'si JSON yerine HTML döndürdü: " + weatherRaw);
+            }
+
+            if (!weatherRoot.has("current_weather")) {
+                throw new RuntimeException("JSON içinde 'current_weather' bulunamadı: " + weatherRaw);
+            }
+
+            JsonObject weatherCurrent = weatherRoot.getAsJsonObject("current_weather");
+
+            if (!weatherCurrent.has("temperature")) {
+                throw new RuntimeException("'temperature' alanı eksik: " + weatherCurrent);
+            }
+
             double temp = weatherCurrent.get("temperature").getAsDouble();
+
+            // Namaz vakitleri
             String fajr = prayerData.get("Fajr").getAsString();
             String dhuhr = prayerData.get("Dhuhr").getAsString();
             String asr = prayerData.get("Asr").getAsString();
@@ -60,7 +79,9 @@ public class Main {
 
             sendTelegram(botToken, chatId, message);
 
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     static String getHTML(String urlToRead) throws Exception {
@@ -68,9 +89,13 @@ public class Main {
         URL url = new URL(urlToRead);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
+        conn.setConnectTimeout(5000);
+        conn.setReadTimeout(5000);
+
         try (Scanner reader = new Scanner(conn.getInputStream())) {
             while (reader.hasNextLine()) result.append(reader.nextLine());
         }
+
         return result.toString();
     }
 

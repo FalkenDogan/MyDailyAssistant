@@ -7,59 +7,75 @@ import java.time.format.DateTimeFormatter;
 
 public class Main {
     public static void main(String[] args) {
-
         String botToken = System.getenv("TELEGRAM_TOKEN");
         String chatId = System.getenv("TELEGRAM_CHAT_ID");
-        String city = "Krefeld"; // NRW bölgesi için merkez veya kendi şehrin
-        String country = "Germany";
+        String city = "Krefeld"; // Şehrini buradan güncelleyebilirsin
+
+        // Krefeld Koordinatları (Hava durumu için hassas veri)
+        String lat = "51.33";
+        String lon = "6.56";
 
         try {
-            // 1. Namaz Vakitlerini Getir (Method 13 = Diyanet)
-            URL url = new URL("https://api.aladhan.com/v1/timingsByCity?city=" + city + "&country=" + country + "&method=13");
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+            // 1. Namaz Vakitlerini Çek (Diyanet Metodu)
+            String prayerJson = getHTML("https://api.aladhan.com/v1/timingsByCity?city=" + city + "&country=Germany&method=13");
 
-            Scanner sc = new Scanner(conn.getInputStream());
-            StringBuilder inline = new StringBuilder();
-            while (sc.hasNext()) {
-                inline.append(sc.nextLine());
-            }
-            sc.close();
+            // 2. Hava Durumunu Çek (Open-Meteo)
+            String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
 
-            // 2. Basit JSON Parçalama (Kütüphane bağımlılığını azaltmak için manuel)
-            String response = inline.toString();
-            String fajr = getValue(response, "Fajr");
-            String sunrise = getValue(response, "Sunrise");
-            String dhuhr = getValue(response, "Dhuhr");
-            String asr = getValue(response, "Asr");
-            String maghrib = getValue(response, "Maghrib");
-            String isha = getValue(response, "Isha");
+            // Verileri Ayıkla
+            String fajr = getValue(prayerJson, "Fajr");
+            String dhuhr = getValue(prayerJson, "Dhuhr");
+            String asr = getValue(prayerJson, "Asr");
+            String maghrib = getValue(prayerJson, "Maghrib");
+            String isha = getValue(prayerJson, "Isha");
 
-            // 3. Mesaj Formatı
+            // Hava Durumu Verileri
+            String temp = getSimpleValue(weatherJson, "temperature");
+            String wind = getSimpleValue(weatherJson, "windspeed");
+
+            // Mesajı Oluştur
             String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             String message = String.format(
-                    "📅 *%s - %s Namaz Vakitleri*\n\n" +
+                    "📅 *%s - %s Özeti*\n\n" +
+                            "☁️ *Hava Durumu:* %s°C\n" +
+                            "💨 *Rüzgar:* %s km/s\n\n" +
+                            "🕋 *Namaz Vakitleri:*\n" +
                             "🌅 İmsak: %s\n" +
-                            "☀️ Güneş: %s\n" +
                             "📅 Öğle: %s\n" +
                             "🕌 İkindi: %s\n" +
                             "🌆 Akşam: %s\n" +
                             "🌙 Yatsı: %s",
-                    date, city, fajr, sunrise, dhuhr, asr, maghrib, isha
+                    date, city, temp, wind, fajr, dhuhr, asr, maghrib, isha
             );
 
-            // 4. Telegram'a Gönder
             sendTelegram(botToken, chatId, message);
-            System.out.println("Mesaj başarıyla gönderildi!");
+            System.out.println("Hava durumu ve vakitler gönderildi!");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private static String getHTML(String urlToRead) throws Exception {
+        StringBuilder result = new StringBuilder();
+        URL url = new URL(urlToRead);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        try (Scanner reader = new Scanner(conn.getInputStream())) {
+            while (reader.hasNextLine()) result.append(reader.nextLine());
+        }
+        return result.toString();
+    }
+
     private static String getValue(String json, String key) {
         int start = json.indexOf("\"" + key + "\":\"") + key.length() + 4;
-        int end = json.indexOf("\"", start);
+        return json.substring(start, json.indexOf("\"", start));
+    }
+
+    private static String getSimpleValue(String json, String key) {
+        int start = json.indexOf("\"" + key + "\":") + key.length() + 2;
+        int end = json.indexOf(",", start);
+        if (end == -1) end = json.indexOf("}", start);
         return json.substring(start, end);
     }
 

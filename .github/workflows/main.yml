@@ -30,4 +30,4 @@ jobs:
           # Derle
           javac Main.java
           # Çalıştır (Paket adıyla birlikte)
-          java -cp . org.example.Main
+          java Main

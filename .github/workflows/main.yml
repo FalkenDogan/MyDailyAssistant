@@ -1,4 +1,4 @@
-name: Namaz Vakti Otomasyonu
+name: Günlkü Asistan Otomasyonu
 
 on:
   schedule:

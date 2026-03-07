@@ -22,8 +22,10 @@ public class Main {
 
             // 2. Hava Durumunu Çek
             String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
+            // Direkt current_weather Objekt finden (nicht current_weather_units)
             int currentWeatherStart = weatherJson.indexOf("\"current_weather\":{");
-            String currentWeatherPart = weatherJson.substring(currentWeatherStart);
+            int currentWeatherEnd = weatherJson.indexOf("}", currentWeatherStart + 20) + 1;
+            String currentWeatherPart = weatherJson.substring(currentWeatherStart, currentWeatherEnd);
 
             // 3. Sınav Geri Sayımı (Hedef: 28.04.2026)
             LocalDate bugun = LocalDate.now();
@@ -79,18 +81,30 @@ public class Main {
     }
 
     private static String getSimpleValue(String json, String key) {
-        // Anahtarın değerinin başladığı konumu bul
-        int start = json.indexOf("\"" + key + "\":") + key.length() + 2;
+        // Anahtarın değerinin başladığı konumu bul: "temperature":12.2
+        int keyPos = json.indexOf("\"" + key + "\":");
+        if (keyPos == -1) return "";
 
-        // Değerin bittiği yeri bul (virgül veya süslü parantez)
-        int end = json.length();
-        int commaIndex = json.indexOf(",", start);
-        int braceIndex = json.indexOf("}", start);
+        // ":" karakterinden sonra başla
+        int start = keyPos + key.length() + 3; // "key": uzunluğu
 
-        if (commaIndex != -1 && commaIndex < end) end = commaIndex;
-        if (braceIndex != -1 && braceIndex < end) end = braceIndex;
+        // Boşlukları atla
+        while (start < json.length() && json.charAt(start) == ' ') {
+            start++;
+        }
 
-        return json.substring(start, end).replace("\"", ""); // Eğer tırnak varsa temizle
+        // Değerin bittiği yeri bul (sayı değeri için)
+        int end = start;
+        while (end < json.length()) {
+            char c = json.charAt(end);
+            // Rakam, nokta veya eksi işareti değilse dur
+            if (c != '.' && c != '-' && (c < '0' || c > '9')) {
+                break;
+            }
+            end++;
+        }
+
+        return json.substring(start, end).trim();
     }
 
     private static void sendTelegram(String token, String chatId, String text) throws Exception {

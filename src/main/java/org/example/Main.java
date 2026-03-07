@@ -145,16 +145,20 @@ public class Main {
 
     // JSON → TEMPERATURE
     public static double getTemperature(String json) {
-
         try {
-
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(json);
 
-            JsonNode tempNode =
-                    root.path("current_weather").path("temperature");
+            // daha güvenli yol
+            JsonNode currentWeather = root.path("current_weather");
+            if (currentWeather.isMissingNode() || currentWeather.isNull()) {
+                System.out.println("current_weather bulunamadı");
+                return Double.NaN;
+            }
 
-            if (tempNode.isMissingNode()) {
+            JsonNode tempNode = currentWeather.path("temperature");
+            if (tempNode.isMissingNode() || tempNode.isNull()) {
+                System.out.println("temperature bulunamadı");
                 return Double.NaN;
             }
 
@@ -165,7 +169,6 @@ public class Main {
             return Double.NaN;
         }
     }
-
 
     // HAVA DURUMU API
     public static String getWeatherJson(double lat, double lon) {

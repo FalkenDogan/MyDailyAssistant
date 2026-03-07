@@ -2,10 +2,10 @@ name: Günlük Asistan Otomasyonu
 
 on:
   schedule:
-    # Bu ayar her sabah TR saatiyle 06:00'da çalışır (UTC 03:00)
-    # Almanya saati kışın UTC+1, yazın UTC+2 olduğu için saat kayabilir.
-    - cron: '0 6 * * *'
-  workflow_dispatch: # Bu satır, "Manuel Çalıştır" butonu ekler (Test için)
+    - cron: '0 7 * * *'
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   run-java:
@@ -19,11 +19,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'maven' # Maven bağımlılıklarını önbelleğe alarak hızlandırır
 
       - name: Maven ile Derle ve Çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-            mvn clean compile
-            mvn exec:java -Dexec.mainClass="org.example.Main"
+          mvn clean compile
+          mvn exec:java -Dexec.mainClass="org.example.Main"

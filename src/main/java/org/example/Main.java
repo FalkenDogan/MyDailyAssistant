@@ -27,36 +27,38 @@ public class Main {
 
             // 2. Hava Durumunu Çek
             String weatherRaw = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
-            JsonObject weatherData = JsonParser.parseString(weatherRaw).getAsJsonObject()
+            JsonObject weatherCurrent = JsonParser.parseString(weatherRaw).getAsJsonObject()
                     .get("current_weather").getAsJsonObject();
 
-            // 3. Verileri Tertemiz Alalım
-            double temp = weatherData.get("temperature").getAsDouble();
+            // 3. Verileri GSON ile Güvenli Şekilde Al
+            double temp = weatherCurrent.get("temperature").getAsDouble();
             String fajr = prayerData.get("Fajr").getAsString();
             String dhuhr = prayerData.get("Dhuhr").getAsString();
             String asr = prayerData.get("Asr").getAsString();
             String maghrib = prayerData.get("Maghrib").getAsString();
             String isha = prayerData.get("Isha").getAsString();
 
-            // Sınav Geri Sayımı
+            // Sınav Geri Sayımı (28.04.2026)
             long gunKaldi = ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.of(2026, 4, 28));
 
             // Mesaj Formatı
             String message = String.format(
-                    "📅 *%s - Günlük Özet*\n\n" +
+                    "📅 *%s - Günlük Bilgilendirme*\n\n" +
                             "🎯 *SINAV DURUMU*\n" +
-                            "🏁 Sınava tam *%d gün* kaldı!\n\n" +
+                            "🏁 Büyük sınava tam *%d gün* kaldı!\n" +
+                            "🚀 Odaklanmaya devam et.\n\n" +
                             "☁️ *Hava Durumu:* %.1f°C\n\n" +
                             "🕋 *Namaz Vakitleri (%s):*\n" +
-                            "🌅 İmsak: %s | 📅 Öğle: %s\n" +
-                            "🕌 İkindi: %s | 🌆 Akşam: %s\n" +
+                            "🌅 İmsak: %s\n" +
+                            "📅 Öğle: %s\n" +
+                            "🕌 İkindi: %s\n" +
+                            "🌆 Akşam: %s\n" +
                             "🌙 Yatsı: %s",
                     LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
                     gunKaldi, temp, city, fajr, dhuhr, asr, maghrib, isha
             );
 
             sendTelegram(botToken, chatId, message);
-            System.out.println("GSON ile başarıyla gönderildi!");
 
         } catch (Exception e) { e.printStackTrace(); }
     }

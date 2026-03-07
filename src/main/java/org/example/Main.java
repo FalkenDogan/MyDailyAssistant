@@ -72,7 +72,7 @@ public class Main {
             // ────────────────────────────────────────────────
             String message = String.format(
                     "📅 *%s - Günlük Bilgilendirme*\n\n" +
-                            "🎯 *SINAV DURUMU* 52 gün kaldı → **%d gün** kaldı!\n" +
+                            "🎯 *SINAV DURUMU*\n" +
                             "🏁 Büyük sınava tam *%d gün* kaldı!\n" +
                             "🚀 Odaklanmaya devam et.\n\n" +
                             "☁️ *Hava Durumu (%s):* %s\n\n" +
@@ -82,9 +82,7 @@ public class Main {
                             "🕌 İkindi:  %s\n" +
                             "🌆 Akşam:   %s\n" +
                             "🌙 Yatsı:   %s\n" +
-                            "\nSaat: %s",
                     today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
-                    gunKaldi,
                     gunKaldi,
                     city,
                     weatherText,
@@ -92,8 +90,7 @@ public class Main {
                     dhuhr,
                     asr,
                     maghrib,
-                    isha,
-                    today.atTime(23, 20).format(DateTimeFormatter.ofPattern("HH:mm"))
+                    isha
             );
 
             // ────────────────────────────────────────────────

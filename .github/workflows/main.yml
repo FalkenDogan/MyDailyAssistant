@@ -1,4 +1,4 @@
-name: Günlkü Asistan Otomasyonu
+name: Günlük Asistan Otomasyonu
 
 on:
   schedule:

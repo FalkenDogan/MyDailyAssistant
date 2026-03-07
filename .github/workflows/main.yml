@@ -1,11 +1,11 @@
-name: Günlük Asistan Otomasyonu
+name: Günlük Bilgilendirme
 
 on:
   schedule:
-    - cron: '0 7 * * *'
+    - cron: '0 20 * * *'   # Her gün saat 21:00 Almanya saati (UTC+1 = 20:00 UTC)
   push:
-    branches: [ main ]
-  workflow_dispatch:
+    branches: [ master ]
+  workflow_dispatch:        # Manuel tetikleme
 
 jobs:
   run-java:
@@ -19,12 +19,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven' # Maven bağımlılıklarını önbelleğe alarak hızlandırır
+          cache: 'maven'
 
       - name: Maven ile Derle ve Çalıştır
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          mvn clean compile
+          mvn clean package -q
           mvn exec:java -Dexec.mainClass="org.example.Main"

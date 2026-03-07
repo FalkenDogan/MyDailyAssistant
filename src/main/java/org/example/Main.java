@@ -1,5 +1,7 @@
 package org.example;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -18,49 +20,45 @@ public class Main {
 
         try {
             // 1. Namaz Vakitlerini Çek
-            String prayerJson = getHTML("https://api.aladhan.com/v1/timingsByCity?city=" + city + "&country=Germany&method=13");
+            String prayerRaw = getHTML("https://api.aladhan.com/v1/timingsByCity?city=" + city + "&country=Germany&method=13");
+            JsonObject prayerData = JsonParser.parseString(prayerRaw).getAsJsonObject()
+                    .get("data").getAsJsonObject()
+                    .get("timings").getAsJsonObject();
 
             // 2. Hava Durumunu Çek
-            String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
-            // Direkt current_weather Objekt finden (nicht current_weather_units)
-            int currentWeatherStart = weatherJson.lastIndexOf("\"current_weather\":{");
-            String currentWeatherPart = weatherJson.substring(currentWeatherStart);
+            String weatherRaw = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
+            JsonObject weatherData = JsonParser.parseString(weatherRaw).getAsJsonObject()
+                    .get("current_weather").getAsJsonObject();
 
-            // 3. Sınav Geri Sayımı (Hedef: 28.04.2026)
-            LocalDate bugun = LocalDate.now();
-            LocalDate sinavTarihi = LocalDate.of(2026, 4, 28);
-            long gunKaldi = ChronoUnit.DAYS.between(bugun, sinavTarihi);
+            // 3. Verileri Tertemiz Alalım
+            double temp = weatherData.get("temperature").getAsDouble();
+            String fajr = prayerData.get("Fajr").getAsString();
+            String dhuhr = prayerData.get("Dhuhr").getAsString();
+            String asr = prayerData.get("Asr").getAsString();
+            String maghrib = prayerData.get("Maghrib").getAsString();
+            String isha = prayerData.get("Isha").getAsString();
 
-            // Verileri Ayıkla
-            String fajr = getValue(prayerJson, "Fajr");
-            String dhuhr = getValue(prayerJson, "Dhuhr");
-            String asr = getValue(prayerJson, "Asr");
-            String maghrib = getValue(prayerJson, "Maghrib");
-            String isha = getValue(prayerJson, "Isha");
-            String temp = getSimpleValue(currentWeatherPart, "temperature");
+            // Sınav Geri Sayımı
+            long gunKaldi = ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.of(2026, 4, 28));
+
             // Mesaj Formatı
-            String dateStr = bugun.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             String message = String.format(
-                    "📅 *%s - Günlük Bilgilendirme*\n\n" +
+                    "📅 *%s - Günlük Özet*\n\n" +
                             "🎯 *SINAV DURUMU*\n" +
-                            "🏁 Büyük sınava tam *%d gün* kaldı!\n" +
-                            "🚀 Odaklanmaya devam et.\n\n" +
-                            "☁️ *Hava Durumu:* %s°C\n\n" +
+                            "🏁 Sınava tam *%d gün* kaldı!\n\n" +
+                            "☁️ *Hava Durumu:* %.1f°C\n\n" +
                             "🕋 *Namaz Vakitleri (%s):*\n" +
-                            "🌅 İmsak: %s\n" +
-                            "📅 Öğle: %s\n" +
-                            "🕌 İkindi: %s\n" +
-                            "🌆 Akşam: %s\n" +
+                            "🌅 İmsak: %s | 📅 Öğle: %s\n" +
+                            "🕌 İkindi: %s | 🌆 Akşam: %s\n" +
                             "🌙 Yatsı: %s",
-                    dateStr, gunKaldi, temp, city, fajr, dhuhr, asr, maghrib, isha
+                    LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
+                    gunKaldi, temp, city, fajr, dhuhr, asr, maghrib, isha
             );
 
             sendTelegram(botToken, chatId, message);
-            System.out.println("Sınav geri sayımı ve vakitler gönderildi!");
+            System.out.println("GSON ile başarıyla gönderildi!");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     static String getHTML(String urlToRead) throws Exception {
@@ -74,48 +72,9 @@ public class Main {
         return result.toString();
     }
 
-    static String getValue(String json, String key) {
-        int start = json.indexOf("\"" + key + "\":\"") + key.length() + 4;
-        return json.substring(start, json.indexOf("\"", start));
-    }
-
-    private static String getSimpleValue(String json, String key) {
-        // 1. Anahtarın konumunu bul
-        int keyPos = json.indexOf("\"" + key + "\":");
-        if (keyPos == -1) return "Hata";
-
-        // 2. İki noktadan (:) sonrasına git
-        int startSearch = json.indexOf(":", keyPos) + 1;
-
-        // 3. İlk rakamı, eksi işaretini veya noktayı bulana kadar ilerle
-        int start = -1;
-        for (int i = startSearch; i < json.length(); i++) {
-            char c = json.charAt(i);
-            if (Character.isDigit(c) || c == '-' || c == '.') {
-                start = i;
-                break;
-            }
-        }
-
-        if (start == -1) return "N/A";
-
-        // 4. Sayı bitene kadar (rakam, nokta veya eksi olduğu sürece) ilerle
-        int end = start;
-        while (end < json.length()) {
-            char c = json.charAt(end);
-            if (Character.isDigit(c) || c == '.' || c == '-') {
-                end++;
-            } else {
-                break;
-            }
-        }
-
-        return json.substring(start, end);
-    }
-
-    private static void sendTelegram(String token, String chatId, String text) throws Exception {
-        String urlString = "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId + "&text=" +
-                java.net.URLEncoder.encode(text, "UTF-8") + "&parse_mode=Markdown";
+    static void sendTelegram(String token, String chatId, String text) throws Exception {
+        String urlString = "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chatId +
+                "&text=" + java.net.URLEncoder.encode(text, "UTF-8") + "&parse_mode=Markdown";
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");

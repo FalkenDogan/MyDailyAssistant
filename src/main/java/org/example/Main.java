@@ -22,6 +22,8 @@ public class Main {
 
             // 2. Hava Durumunu Çek
             String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
+            int currentWeatherStart = weatherJson.indexOf("\"current_weather\":{");
+            String currentWeatherPart = weatherJson.substring(currentWeatherStart);
 
             // 3. Sınav Geri Sayımı (Hedef: 28.04.2026)
             LocalDate bugun = LocalDate.now();
@@ -34,8 +36,7 @@ public class Main {
             String asr = getValue(prayerJson, "Asr");
             String maghrib = getValue(prayerJson, "Maghrib");
             String isha = getValue(prayerJson, "Isha");
-            String temp = getSimpleValue(weatherJson, "temperature");
-
+            String temp = getSimpleValue(currentWeatherPart, "temperature");
             // Mesaj Formatı
             String dateStr = bugun.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
             String message = String.format(
@@ -61,7 +62,7 @@ public class Main {
         }
     }
 
-    private static String getHTML(String urlToRead) throws Exception {
+    static String getHTML(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();
         URL url = new URL(urlToRead);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -72,16 +73,24 @@ public class Main {
         return result.toString();
     }
 
-    private static String getValue(String json, String key) {
+    static String getValue(String json, String key) {
         int start = json.indexOf("\"" + key + "\":\"") + key.length() + 4;
         return json.substring(start, json.indexOf("\"", start));
     }
 
     private static String getSimpleValue(String json, String key) {
+        // Anahtarın değerinin başladığı konumu bul
         int start = json.indexOf("\"" + key + "\":") + key.length() + 2;
-        int end = json.indexOf(",", start);
-        if (end == -1) end = json.indexOf("}", start);
-        return json.substring(start, end);
+
+        // Değerin bittiği yeri bul (virgül veya süslü parantez)
+        int end = json.length();
+        int commaIndex = json.indexOf(",", start);
+        int braceIndex = json.indexOf("}", start);
+
+        if (commaIndex != -1 && commaIndex < end) end = commaIndex;
+        if (braceIndex != -1 && braceIndex < end) end = braceIndex;
+
+        return json.substring(start, end).replace("\"", ""); // Eğer tırnak varsa temizle
     }
 
     private static void sendTelegram(String token, String chatId, String text) throws Exception {

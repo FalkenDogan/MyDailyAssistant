@@ -1,0 +1,36 @@
+name: Namaz Vakti Otomasyonu
+
+on:
+  schedule:
+    # Bu ayar her sabah TR saatiyle 06:00'da çalışır (UTC 03:00)
+    # Almanya saati kışın UTC+1, yazın UTC+2 olduğu için saat kayabilir.
+    - cron: '0 4 * * *' 
+  workflow_dispatch: # Bu satır, "Manuel Çalıştır" butonu ekler (Test için)
+
+jobs:
+  run-java:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Kopyala
+        uses: actions/checkout@v4
+
+      - name: Java JDK 17 Kur
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Java Kodunu Derle ve Çalıştır
+        env:               
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set -e
+          # Repo kökünde kal; kaynak kökünü classpath kökü gibi düşün
+          mkdir -p out
+
+          # Derle: paket klasörlerini out altına oluşturur
+          javac -d out src/main/java/org/example/Main.java
+
+          # Çalıştır: classpath out, sınıf adı org.example.Main
+          java -cp out org.example.Main

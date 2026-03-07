@@ -81,7 +81,7 @@ public class Main {
                             "🕌 Öğle:    %s\n" +
                             "🕌 İkindi:  %s\n" +
                             "🌆 Akşam:   %s\n" +
-                            "🌙 Yatsı:   %s\n" +
+                            "🌙 Yatsı:   %s",
                     today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
                     gunKaldi,
                     city,

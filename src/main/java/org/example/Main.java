@@ -23,9 +23,8 @@ public class Main {
             // 2. Hava Durumunu Çek
             String weatherJson = getHTML("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon + "&current_weather=true");
             // Direkt current_weather Objekt finden (nicht current_weather_units)
-            int currentWeatherStart = weatherJson.indexOf("\"current_weather\":{");
-            int currentWeatherEnd = weatherJson.indexOf("}", currentWeatherStart + 20) + 1;
-            String currentWeatherPart = weatherJson.substring(currentWeatherStart, currentWeatherEnd);
+            int currentWeatherStart = weatherJson.lastIndexOf("\"current_weather\":{");
+            String currentWeatherPart = weatherJson.substring(currentWeatherStart);
 
             // 3. Sınav Geri Sayımı (Hedef: 28.04.2026)
             LocalDate bugun = LocalDate.now();
@@ -81,30 +80,37 @@ public class Main {
     }
 
     private static String getSimpleValue(String json, String key) {
-        // Anahtarın değerinin başladığı konumu bul: "temperature":12.2
+        // 1. Anahtarın konumunu bul
         int keyPos = json.indexOf("\"" + key + "\":");
-        if (keyPos == -1) return "";
+        if (keyPos == -1) return "Hata";
 
-        // ":" karakterinden sonra başla
-        int start = keyPos + key.length() + 3; // "key": uzunluğu
+        // 2. İki noktadan (:) sonrasına git
+        int startSearch = json.indexOf(":", keyPos) + 1;
 
-        // Boşlukları atla
-        while (start < json.length() && json.charAt(start) == ' ') {
-            start++;
+        // 3. İlk rakamı, eksi işaretini veya noktayı bulana kadar ilerle
+        int start = -1;
+        for (int i = startSearch; i < json.length(); i++) {
+            char c = json.charAt(i);
+            if (Character.isDigit(c) || c == '-' || c == '.') {
+                start = i;
+                break;
+            }
         }
 
-        // Değerin bittiği yeri bul (sayı değeri için)
+        if (start == -1) return "N/A";
+
+        // 4. Sayı bitene kadar (rakam, nokta veya eksi olduğu sürece) ilerle
         int end = start;
         while (end < json.length()) {
             char c = json.charAt(end);
-            // Rakam, nokta veya eksi işareti değilse dur
-            if (c != '.' && c != '-' && (c < '0' || c > '9')) {
+            if (Character.isDigit(c) || c == '.' || c == '-') {
+                end++;
+            } else {
                 break;
             }
-            end++;
         }
 
-        return json.substring(start, end).trim();
+        return json.substring(start, end);
     }
 
     private static void sendTelegram(String token, String chatId, String text) throws Exception {

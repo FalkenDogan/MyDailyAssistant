@@ -3,20 +3,25 @@ package org.example;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 public class Main {
     public static void main(String[] args) {
         String botToken = System.getenv("TELEGRAM_TOKEN");
         String chatId = System.getenv("TELEGRAM_CHAT_ID");
 
         String city = "Krefeld";
-        String lat = "51.33";
-        String lon = "6.56";
+        Double lat = 51.33;
+        Double lon = 6.56;
 
         try {
             // 1. Namaz Vakitlerini Çek
@@ -26,29 +31,9 @@ public class Main {
                     .get("timings").getAsJsonObject();
 
             // 2. Hava Durumunu Çek
-            String weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + lat +
-                    "&longitude=" + lon + "&current_weather=true";
+            String json = getWeatherJson(lat, lon);
 
-            String weatherRaw = getHTML(weatherUrl);
-
-            JsonObject weatherRoot;
-            try {
-                weatherRoot = JsonParser.parseString(weatherRaw).getAsJsonObject();
-            } catch (Exception e) {
-                throw new RuntimeException("Hava durumu API'si JSON yerine HTML döndürdü: " + weatherRaw);
-            }
-
-            if (!weatherRoot.has("current_weather")) {
-                throw new RuntimeException("JSON içinde 'current_weather' bulunamadı: " + weatherRaw);
-            }
-
-            JsonObject weatherCurrent = weatherRoot.getAsJsonObject("current_weather");
-
-            if (!weatherCurrent.has("temperature")) {
-                throw new RuntimeException("'temperature' alanı eksik: " + weatherCurrent);
-            }
-
-            double temp = weatherCurrent.get("temperature").getAsDouble();
+            double temp = getTemperature(json);
 
             // Namaz vakitleri
             String fajr = prayerData.get("Fajr").getAsString();
@@ -106,5 +91,46 @@ public class Main {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.getInputStream().read();
+    }
+
+    public static double getTemperature(String json) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(json);
+
+            return root
+                    .get("current_weather")
+                    .get("temperature")
+                    .asDouble();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Double.NaN;
+        }
+    }
+
+    public static String getWeatherJson(double lat, double lon) {
+        try {
+            String weatherUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + lat +
+                    "&longitude=" + lon + "&current_weather=true";
+
+            HttpClient client = HttpClient.newHttpClient();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(weatherUrl))
+                    .GET()
+                    .build();
+
+            HttpResponse<String> response = client.send(
+                    request,
+                    HttpResponse.BodyHandlers.ofString()
+            );
+
+            return response.body();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

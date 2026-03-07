@@ -21,13 +21,16 @@ jobs:
           distribution: 'temurin'
 
       - name: Java Kodunu Derle ve Çalıştır
-        env:
+        env:               
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          # Dosyanın olduğu klasöre git
-          cd src/main/java/org/example
-          # Derle
-          javac Main.java
-          # Çalıştır (Paket adıyla birlikte)
-          java Main
+          set -e
+          # Repo kökünde kal; kaynak kökünü classpath kökü gibi düşün
+          mkdir -p out
+
+          # Derle: paket klasörlerini out altına oluşturur
+          javac -d out src/main/java/org/example/Main.java
+
+          # Çalıştır: classpath out, sınıf adı org.example.Main
+          java -cp out org.example.Main

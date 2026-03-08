@@ -61,14 +61,19 @@ public class Main {
                     : String.format("%.1f°C", temp);
 
             // ────────────────────────────────────────────────
-            // 3. Sınav geri sayım
+            // 3. Günlük Kur'an-ı Kerim Meali
+            // ────────────────────────────────────────────────
+            String kuranMeali = KuranMealServisi.dailyKuranPage();
+
+            // ────────────────────────────────────────────────
+            // 4. Sınav geri sayım
             // ────────────────────────────────────────────────
             LocalDate today     = LocalDate.now();
             LocalDate examDate  = LocalDate.of(2026, 4, 28);
             long gunKaldi       = ChronoUnit.DAYS.between(today, examDate);
 
             // ────────────────────────────────────────────────
-            // 4. Mesaj oluştur
+            // 5. Mesaj oluştur
             // ────────────────────────────────────────────────
             String message = String.format(
                     "📅 *%s - Günlük Bilgilendirme*\n\n" +
@@ -81,7 +86,8 @@ public class Main {
                             "🕌 Öğle:    %s\n" +
                             "🕌 İkindi:  %s\n" +
                             "🌆 Akşam:   %s\n" +
-                            "🌙 Yatsı:   %s",
+                            "🌙 Yatsı:   %s\n\n" +
+                            "📖 *Günlük Kur'an-ı Kerim Meali:*\n%s",
                     today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
                     gunKaldi,
                     city,
@@ -90,11 +96,12 @@ public class Main {
                     dhuhr,
                     asr,
                     maghrib,
-                    isha
+                    isha,
+                    kuranMeali
             );
 
             // ────────────────────────────────────────────────
-            // 5. Telegram'a gönder
+            // 6. Telegram'a gönder
             // ────────────────────────────────────────────────
             sendTelegram(botToken, chatId, message);
 

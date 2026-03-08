@@ -79,7 +79,7 @@ public class KuranMealServisi {
         }
     return trMealMetni;
     }
-    private static int calculateDailyPageNumber() {
+    public static int calculateDailyPageNumber() {
         java.time.LocalDate startDate = java.time.LocalDate.of(2026, 3, 8);
         java.time.LocalDate today = java.time.LocalDate.now();
 

@@ -192,24 +192,37 @@ public class Main {
     }
 
     static void sendTelegram(String token, String chatId, String text) throws Exception {
-        String encodedText = java.net.URLEncoder.encode(text, "UTF-8");
-        String urlString = "https://api.telegram.org/bot" + token +
-                "/sendMessage?chat_id=" + chatId +
-                "&text=" + encodedText +
-                "&parse_mode=Markdown";
+        String urlString = "https://api.telegram.org/bot" + token + "/sendMessage";
+
+        byte[] body = ("chat_id=" + java.net.URLEncoder.encode(chatId, "UTF-8")
+                + "&text=" + java.net.URLEncoder.encode(text, "UTF-8")
+                + "&parse_mode=Markdown")
+                .getBytes("UTF-8");
 
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setConnectTimeout(8000);
-        conn.setReadTimeout(8000);
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        conn.setRequestProperty("Content-Length", String.valueOf(body.length));
+        conn.setConnectTimeout(10_000);
+        conn.setReadTimeout(10_000);
+
+        try (var out = conn.getOutputStream()) {
+            out.write(body);
+        }
 
         int responseCode = conn.getResponseCode();
         if (responseCode != 200) {
-            System.err.println("Telegram gönderme hatası → HTTP " + responseCode);
+            String errorBody = "";
+            try (var err = conn.getErrorStream()) {
+                if (err != null) errorBody = new String(err.readAllBytes(), "UTF-8");
+            }
+            throw new RuntimeException(
+                    "Telegram gönderme hatası → HTTP " + responseCode + ": " + errorBody);
         }
 
-        // Response body okumaya gerek yok ama bağlantıyı temizlemek için
+        // Başarılı yanıtı temizle
         try (var in = conn.getInputStream()) {
             in.readAllBytes();
         }

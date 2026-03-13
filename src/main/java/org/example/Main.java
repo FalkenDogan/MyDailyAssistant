@@ -65,6 +65,7 @@ public class Main {
             // ────────────────────────────────────────────────
             int kuranSayfaNo  = KuranMealServisi.calculateDailyPageNumber();
             String kuranMeali = KuranMealServisi.dailyKuranPage();
+            String hadisText  = HadisServisi.buildDailyHadisText(kuranSayfaNo);
 
             // ────────────────────────────────────────────────
             // 4. Sınav geri sayım
@@ -90,6 +91,7 @@ public class Main {
                             "🌙 Yatsı:   %s\n\n" +
                             "📖 *Günlük Kur'an-ı Kerim Meali*\n" +
                             "📄 Sayfa Numarası: *%d*\n\n" +
+                            "%s\n\n" +
                             "%s",
                     today.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")),
                     gunKaldi,
@@ -101,7 +103,8 @@ public class Main {
                     maghrib,
                     isha,
                     kuranSayfaNo,
-                    kuranMeali
+                    kuranMeali,
+                    hadisText
             );
 
             // ────────────────────────────────────────────────

@@ -28,10 +28,11 @@ public class HadisServisi {
         }
 
         int safePageNumber = Math.max(pageNumber, 1);
-        int hedefId = ((safePageNumber - 1) % hadisler.size()) + 1;
+        int hedefId = safePageNumber; // Doğrudan sayfa numarasını id olarak kullan
 
         JsonObject hadisObj = findById(hadisler, hedefId);
         if (hadisObj == null) {
+            // Eğer exact id bulunamazsa, modulo ile döngü yap
             int index = (safePageNumber - 1) % hadisler.size();
             hadisObj = hadisler.get(index).getAsJsonObject();
         }

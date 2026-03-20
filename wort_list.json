@@ -34,8 +34,35 @@
   ],
   "tips": "Bu fiil genellikle dönüşlü (reflexive) olarak kullanılır: 'sich ausruhen'. Yazılım dünyasında 'Sprints' sonrası 'Burnout'u önlemek için sıkça vurgulanan bir eylemdir."
 },
+  {
+    "id": 15,
+    "word": "erholen",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "dinlenmek, iyileşmek, (ekonomi/piyasa) toparlanmak",
+      "de": "sich nach einer Anstrengung ausruhen veya wieder in einen guten Zustand kommen"
+    },
+    "synonyms": ["ausruhen", "entspannen", "regenerieren"],
+    "antonyms": ["ermüden", "anstrengen", "verschlechtern"],
+    "examples": [
+      {
+        "sentence": "Nach dem stressigen Release-Wochenende muss sich das gesamte DevOps-Team erst einmal erholen.",
+        "translation": "After the stressful release weekend, the entire DevOps team needs to recover first."
+      },
+      {
+        "sentence": "Die Datenbankverbindung hat sich nach dem kurzen Serverausfall schnell wieder erholt.",
+        "translation": "The database connection recovered quickly after the brief server outage."
+      },
+      {
+        "sentence": "Ich erhole mich am besten, wenn ich am Wochenende gar nicht auf mein Diensthandy schaue.",
+        "translation": "I recover best when I don't look at my work phone at all during the weekend."
+      }
+    ],
+    "tips": "Bu fiil 'sich erholen' şeklinde dönüşlü (reflexive) kullanılır. Yazılım dünyasında sadece insanların dinlenmesi için değil, sistemlerin veya borsa grafiklerinin 'toparlanması' anlamında da sıkça karşınıza çıkar."
+  },
 {
-  "id": 15,
+  "id": 16,
   "word": "verraten",
   "article": null,
   "type": "verb",
@@ -69,9 +96,8 @@
   ],
   "tips": "Yazılımda hata ayıklarken (debugging) bir ipucunun size hatayı 'ele vermesi' durumunda çok kullanılır. Ayrıca 'Geheimnis verraten' (sır vermek) günlük ofis dilinde yaygındır."
 },
-
 {
-  "id": 16,
+  "id": 17,
   "word": "beliebige",
   "article": null,
   "type": "adj",
@@ -106,7 +132,7 @@
   "tips": "Yazılımda 'any' veya 'random' karşılığı olarak çok sık kullanılır. 'Beliebige Reihenfolge' (rastgele sıralama) gibi teknik terimlerde karşınıza çıkar. Sıfat olduğu için isme göre çekimlenir (beliebiger, beliebigen vb.)."
 },
 {
-  "id": 17,
+  "id": 18,
   "word": "zufällig",
   "article": null,
   "type": "adj",

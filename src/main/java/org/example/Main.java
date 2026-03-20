@@ -68,14 +68,19 @@ public class Main {
             String hadisText  = HadisServisi.buildDailyHadisText(kuranSayfaNo);
 
             // ────────────────────────────────────────────────
-            // 4. Sınav geri sayım
+            // 4. Günlük Almanca Kelime
+            // ────────────────────────────────────────────────
+            String alancaKelimeText = WorterService.buildDailyWordText(kuranSayfaNo);
+
+            // ────────────────────────────────────────────────
+            // 5. Sınav geri sayım
             // ────────────────────────────────────────────────
             LocalDate today     = LocalDate.now();
             LocalDate examDate  = LocalDate.of(2026, 4, 28);
             long gunKaldi       = ChronoUnit.DAYS.between(today, examDate);
 
             // ────────────────────────────────────────────────
-            // 5. Mesaj oluştur
+            // 6. Mesaj oluştur
             // ────────────────────────────────────────────────
             String message = String.format(
                     "📅 *%s - Günlük Bilgilendirme*\n\n" +
@@ -108,11 +113,14 @@ public class Main {
             );
 
             // ────────────────────────────────────────────────
-            // 6. Telegram'a gönder
+            // 7. Telegram'a mesajları gönder
             // ────────────────────────────────────────────────
             sendTelegram(botToken, chatId, message);
+            System.out.println("Ana mesaj başarıyla gönderildi.");
 
-            System.out.println("Mesaj başarıyla gönderildi.");
+            // Almanca kelime mesajını ayrı gönder (karakter limiti kaygısı)
+            sendTelegram(botToken, chatId, alancaKelimeText);
+            System.out.println("Almanca kelime mesajı başarıyla gönderildi.");
 
         } catch (Exception e) {
             System.err.println("Genel hata oluştu:");

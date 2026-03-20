@@ -1,6 +1,6 @@
 [
 {
-  "id": 14,
+  "id": 13,
   "word": "ausruhen",
   "article": null,
   "type": "verb",
@@ -35,7 +35,7 @@
   "tips": "Bu fiil genellikle dönüşlü (reflexive) olarak kullanılır: 'sich ausruhen'. Yazılım dünyasında 'Sprints' sonrası 'Burnout'u önlemek için sıkça vurgulanan bir eylemdir."
 },
   {
-    "id": 15,
+    "id": 14,
     "word": "erholen",
     "article": null,
     "type": "verb",
@@ -62,7 +62,7 @@
     "tips": "Bu fiil 'sich erholen' şeklinde dönüşlü (reflexive) kullanılır. Yazılım dünyasında sadece insanların dinlenmesi için değil, sistemlerin veya borsa grafiklerinin 'toparlanması' anlamında da sıkça karşınıza çıkar."
   },
 {
-  "id": 16,
+  "id": 15,
   "word": "verraten",
   "article": null,
   "type": "verb",
@@ -97,7 +97,7 @@
   "tips": "Yazılımda hata ayıklarken (debugging) bir ipucunun size hatayı 'ele vermesi' durumunda çok kullanılır. Ayrıca 'Geheimnis verraten' (sır vermek) günlük ofis dilinde yaygındır."
 },
 {
-  "id": 17,
+  "id": 16,
   "word": "beliebige",
   "article": null,
   "type": "adj",
@@ -132,7 +132,7 @@
   "tips": "Yazılımda 'any' veya 'random' karşılığı olarak çok sık kullanılır. 'Beliebige Reihenfolge' (rastgele sıralama) gibi teknik terimlerde karşınıza çıkar. Sıfat olduğu için isme göre çekimlenir (beliebiger, beliebigen vb.)."
 },
 {
-  "id": 18,
+  "id": 17,
   "word": "zufällig",
   "article": null,
   "type": "adj",

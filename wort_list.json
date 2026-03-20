@@ -1,39 +1,39 @@
 [
-{
-  "id": 13,
-  "word": "ausruhen",
-  "article": null,
-  "type": "verb",
-  "meanings": {
-    "tr": "dinlenmek, istirahat etmek",
-    "de": "sich nach einer Anstrengung entspannen oder erholen, um neue Kräfte zu sammeln"
+  {
+    "id": 13,
+    "word": "ausruhen",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "dinlenmek, istirahat etmek",
+      "de": "sich nach einer Anstrengung entspannen oder erholen, um neue Kräfte zu sammeln"
+    },
+    "synonyms": [
+      "entspannen",
+      "erholen",
+      "pausieren"
+    ],
+    "antonyms": [
+      "anstrengen",
+      "arbeiten",
+      "rackern"
+    ],
+    "examples": [
+      {
+        "sentence": "Nach dem anstrengenden Release-Wochenende müssen wir uns erst einmal ausruhen.",
+        "translation": "After the exhausting release weekend, we need to rest first."
+      },
+      {
+        "sentence": "Du solltest dich kurz ausruhen, bevor du mit dem Code-Review beginnst.",
+        "translation": "You should rest for a bit before you start with the code review."
+      },
+      {
+        "sentence": "Ich werde mich am Sonntag im Park ausruhen.",
+        "translation": "I will rest in the park on Sunday."
+      }
+    ],
+    "tips": "Bu fiil genellikle dönüşlü (reflexive) olarak kullanılır: 'sich ausruhen'. Yazılım dünyasında 'Sprints' sonrası 'Burnout'u önlemek için sıkça vurgulanan bir eylemdir."
   },
-  "synonyms": [
-    "entspannen",
-    "erholen",
-    "pausieren"
-  ],
-  "antonyms": [
-    "anstrengen",
-    "arbeiten",
-    "rackern"
-  ],
-  "examples": [
-    {
-      "sentence": "Nach dem anstrengenden Release-Wochenende müssen wir uns erst einmal ausruhen.",
-      "translation": "After the exhausting release weekend, we need to rest first."
-    },
-    {
-      "sentence": "Du solltest dich kurz ausruhen, bevor du mit dem Code-Review beginnst.",
-      "translation": "You should rest for a bit before you start with the code review."
-    },
-    {
-      "sentence": "Ich werde mich am Sonntag im Park ausruhen.",
-      "translation": "I will rest in the park on Sunday."
-    }
-  ],
-  "tips": "Bu fiil genellikle dönüşlü (reflexive) olarak kullanılır: 'sich ausruhen'. Yazılım dünyasında 'Sprints' sonrası 'Burnout'u önlemek için sıkça vurgulanan bir eylemdir."
-},
   {
     "id": 14,
     "word": "erholen",
@@ -43,8 +43,16 @@
       "tr": "dinlenmek, iyileşmek, (ekonomi/piyasa) toparlanmak",
       "de": "sich nach einer Anstrengung ausruhen veya wieder in einen guten Zustand kommen"
     },
-    "synonyms": ["ausruhen", "entspannen", "regenerieren"],
-    "antonyms": ["ermüden", "anstrengen", "verschlechtern"],
+    "synonyms": [
+      "ausruhen",
+      "entspannen",
+      "regenerieren"
+    ],
+    "antonyms": [
+      "ermüden",
+      "anstrengen",
+      "verschlechtern"
+    ],
     "examples": [
       {
         "sentence": "Nach dem stressigen Release-Wochenende muss sich das gesamte DevOps-Team erst einmal erholen.",
@@ -61,111 +69,109 @@
     ],
     "tips": "Bu fiil 'sich erholen' şeklinde dönüşlü (reflexive) kullanılır. Yazılım dünyasında sadece insanların dinlenmesi için değil, sistemlerin veya borsa grafiklerinin 'toparlanması' anlamında da sıkça karşınıza çıkar."
   },
-{
-  "id": 15,
-  "word": "verraten",
-  "article": null,
-  "type": "verb",
-  "meanings": {
-    "tr": "ele vermek, ifşa etmek, (sır) söylemek, ihanet etmek",
-    "de": "etwas Geheimes preisgeben; jemanden oder etwas die Treue brechen"
+  {
+    "id": 15,
+    "word": "verraten",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "ele vermek, ifşa etmek, (sır) söylemek, ihanet etmek",
+      "de": "etwas Geheimes preisgeben; jemanden oder etwas die Treue brechen"
+    },
+    "synonyms": [
+      "offenbaren",
+      "preisgeben",
+      "enthüllen"
+    ],
+    "antonyms": [
+      "verheimlichen",
+      "verschweigen",
+      "bewahren"
+    ],
+    "examples": [
+      {
+        "sentence": "Du darfst das Passwort für den Admin-Bereich auf keinen Fall verraten.",
+        "translation": "You must not reveal the password for the admin area under any circumstances."
+      },
+      {
+        "sentence": "Die Log-Dateien haben schließlich verraten, warum der Server abgestürzt ist.",
+        "translation": "The log files finally revealed why the server crashed."
+      },
+      {
+        "sentence": "Verrate mir bitte, wie du diesen Bug so schnell gefunden hast.",
+        "translation": "Please tell me (reveal to me) how you found this bug so quickly."
+      }
+    ],
+    "tips": "Yazılımda hata ayıklarken (debugging) bir ipucunun size hatayı 'ele vermesi' durumunda çok kullanılır. Ayrıca 'Geheimnis verraten' (sır vermek) günlük ofis dilinde yaygındır."
   },
-  "synonyms": [
-    "offenbaren",
-    "preisgeben",
-    "enthüllen"
-  ],
-  "antonyms": [
-    "verheimlichen",
-    "verschweigen",
-    "bewahren"
-  ],
-  "examples": [
-    {
-      "sentence": "Du darfst das Passwort für den Admin-Bereich auf keinen Fall verraten.",
-      "translation": "You must not reveal the password for the admin area under any circumstances."
+  {
+    "id": 16,
+    "word": "beliebige",
+    "article": null,
+    "type": "adj",
+    "meanings": {
+      "tr": "herhangi bir, rastgele seçilmiş, fark etmeksizin",
+      "de": "irgendeine; nach Wunsch oder Zufall ausgewählt; ohne Einschränkung"
     },
-    {
-      "sentence": "Die Log-Dateien haben schließlich verraten, warum der Server abgestürzt ist.",
-      "translation": "The log files finally revealed why the server crashed."
-    },
-    {
-      "sentence": "Verrate mir bitte, wie du diesen Bug so schnell gefunden hast.",
-      "translation": "Please tell me (reveal to me) how you found this bug so quickly."
-    }
-  ],
-  "tips": "Yazılımda hata ayıklarken (debugging) bir ipucunun size hatayı 'ele vermesi' durumunda çok kullanılır. Ayrıca 'Geheimnis verraten' (sır vermek) günlük ofis dilinde yaygındır."
-},
-{
-  "id": 16,
-  "word": "beliebige",
-  "article": null,
-  "type": "adj",
-  "meanings": {
-    "tr": "herhangi bir, rastgele seçilmiş, fark etmeksizin",
-    "de": "irgendeine; nach Wunsch oder Zufall ausgewählt; ohne Einschränkung"
+    "synonyms": [
+      "beliebig",
+      "irgendwelche",
+      "wahlfreie"
+    ],
+    "antonyms": [
+      "bestimmte",
+      "spezifische",
+      "konkrete"
+    ],
+    "examples": [
+      {
+        "sentence": "Die Funktion akzeptiert eine beliebige Anzahl von Argumenten.",
+        "translation": "The function accepts an arbitrary number of arguments."
+      },
+      {
+        "sentence": "Wir können für den Test eine beliebige IP-Adresse verwenden.",
+        "translation": "We can use any arbitrary IP address for the test."
+      },
+      {
+        "sentence": "Wähle eine beliebige Datei aus, um den Upload zu prüfen.",
+        "translation": "Select any file to check the upload."
+      }
+    ],
+    "tips": "Yazılımda 'any' veya 'random' karşılığı olarak çok sık kullanılır. 'Beliebige Reihenfolge' (rastgele sıralama) gibi teknik terimlerde karşınıza çıkar. Sıfat olduğu için isme göre çekimlenir (beliebiger, beliebigen vb.)."
   },
-  "synonyms": [
-    "beliebig",
-    "irgendwelche",
-    "wahlfreie"
-  ],
-  "antonyms": [
-    "bestimmte",
-    "spezifische",
-    "konkrete"
-  ],
-  "examples": [
-    {
-      "sentence": "Die Funktion akzeptiert eine beliebige Anzahl von Argumenten.",
-      "translation": "The function accepts an arbitrary number of arguments."
+  {
+    "id": 17,
+    "word": "zufällig",
+    "article": null,
+    "type": "adj",
+    "meanings": {
+      "tr": "tesadüfen, rastgele, şans eseri",
+      "de": "ohne Absicht oder Plan; durch Zufall geschehend; statistisch nicht vorhersehbar"
     },
-    {
-      "sentence": "Wir können für den Test eine beliebige IP-Adresse verwenden.",
-      "translation": "We can use any arbitrary IP address for the test."
-    },
-    {
-      "sentence": "Wähle eine beliebige Datei aus, um den Upload zu prüfen.",
-      "translation": "Select any file to check the upload."
-    }
-  ],
-  "tips": "Yazılımda 'any' veya 'random' karşılığı olarak çok sık kullanılır. 'Beliebige Reihenfolge' (rastgele sıralama) gibi teknik terimlerde karşınıza çıkar. Sıfat olduğu için isme göre çekimlenir (beliebiger, beliebigen vb.)."
-},
-{
-  "id": 17,
-  "word": "zufällig",
-  "article": null,
-  "type": "adj",
-  "meanings": {
-    "tr": "tesadüfen, rastgele, şans eseri",
-    "de": "ohne Absicht oder Plan; durch Zufall geschehend; statistisch nicht vorhersehbar"
-  },
-  "synonyms": [
-    "willkürlich",
-    "wahllos",
-    "unvorhergesehen"
-  ],
-  "antonyms": [
-    "geplant",
-    "absichtlich",
-    "systematisch"
-  ],
-  "examples": [
-    {
-      "sentence": "Wir brauchen eine Funktion, die ein zufälliges Passwort generiert.",
-      "translation": "We need a function that generates a random password."
-    },
-    {
-      "sentence": "Hast du zufällig die Dokumentation für die neue API gesehen?",
-      "translation": "Do you happen to have seen the documentation for the new API?"
-    },
-    {
-      "sentence": "Der Fehler tritt nur zufällig auf und ist schwer zu reproduzieren.",
-      "translation": "The error occurs only randomly and is difficult to reproduce."
-    }
-  ],
-  "tips": "Yazılımda 'Random' karşılığıdır. Hem 'rastgele' (teknik) hem de 'tesadüfen' (sosyal) anlamında kullanılır. 'Zufallsgenerator' (rastgele sayı üreteci) terimiyle sıkça eşleşir."
-}
-
-
+    "synonyms": [
+      "willkürlich",
+      "wahllos",
+      "unvorhergesehen"
+    ],
+    "antonyms": [
+      "geplant",
+      "absichtlich",
+      "systematisch"
+    ],
+    "examples": [
+      {
+        "sentence": "Wir brauchen eine Funktion, die ein zufälliges Passwort generiert.",
+        "translation": "We need a function that generates a random password."
+      },
+      {
+        "sentence": "Hast du zufällig die Dokumentation für die neue API gesehen?",
+        "translation": "Do you happen to have seen the documentation for the new API?"
+      },
+      {
+        "sentence": "Der Fehler tritt nur zufällig auf und ist schwer zu reproduzieren.",
+        "translation": "The error occurs only randomly and is difficult to reproduce."
+      }
+    ],
+    "tips": "Yazılımda 'Random' karşılığıdır. Hem 'rastgele' (teknik) hem de 'tesadüfen' (sosyal) anlamında kullanılır. 'Zufallsgenerator' (rastgele sayı üreteci) terimiyle sıkça eşleşir."
+  }
 ]

@@ -3,8 +3,6 @@ name: Günlük Bilgilendirme
 on:
   schedule:
     - cron: '0 5 * * *'    # Her gün saat 06:00 Almanya saati (UTC+1 = 05:00 UTC)
-    - cron: '0 11 * * *'   # Her gün saat 12:00 Almanya saati (UTC+1 = 11:00 UTC)
-    - cron: '0 17 * * *'   # Her gün saat 18:00 Almanya saati (UTC+1 = 17:00 UTC)
   push:
     branches: [ master ]
   workflow_dispatch:        # Manuel tetikleme

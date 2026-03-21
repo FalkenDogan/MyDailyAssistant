@@ -173,5 +173,327 @@
       }
     ],
     "tips": "Yazılımda 'Random' karşılığıdır. Hem 'rastgele' (teknik) hem de 'tesadüfen' (sosyal) anlamında kullanılır. 'Zufallsgenerator' (rastgele sayı üreteci) terimiyle sıkça eşleşir."
+  },
+  {
+    "id": 18,
+    "word": "vorrangig",
+    "article": null,
+    "type": "adj",
+    "meanings": {
+      "tr": "öncelikli, birinci derecede önemli",
+      "de": "mit höchster Priorität; an erster Stelle stehend"
+    },
+    "synonyms": [
+      "primär",
+      "vordringlich",
+      "hauptsächlich",
+      "essenziell"
+    ],
+    "antonyms": [
+      "zweitrangig",
+      "nebensächlich",
+      "unwichtig"
+    ],
+    "examples": [
+      {
+        "sentence": "Die Behebung des kritischen Bugs hat vorrangig Bedeutung vor neuen Features.",
+        "translation": "Fixing the critical bug has priority over new features."
+      },
+      {
+        "sentence": "In diesem Sprint werden vorrangig Performance-Probleme im Backend behandelt.",
+        "translation": "In this sprint, performance issues in the backend will be addressed primarily."
+      },
+      {
+        "sentence": "Wir müssen uns vorrangig um die Sicherheit der Benutzerdaten kümmern.",
+        "translation": "We must prioritize the security of user data above all else."
+      }
+    ],
+    "tips": "'Vor' (ön) ve 'Rang' (sıra/kademe) kelimelerinden türetilmiştir; bir şeyin 'ön sırada' yani öncelikli olduğunu ifade eder. İş hayatında 'Priority' kelimesinin tam karşılığı olarak sıkça kullanılır."
+  },
+
+  {
+    "id": 19,
+    "word": "kennzeichnen",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "belirlemek, tanımlamak, karakterize etmek, işaretlemek",
+      "de": "etwas durch ein Zeichen kenntlich machen oder die charakteristischen Merkmale einer Sache angeben"
+    },
+    "synonyms": [
+      "markieren",
+      "charakterisieren",
+      "bezeichnen",
+      "identifizieren"
+    ],
+    "antonyms": [
+      "verschleiern",
+      "verbergen",
+      "ignorieren"
+    ],
+    "examples": [
+      {
+        "sentence": "Wir müssen die veralteten API-Endpunkte als 'deprecated' kennzeichnen.",
+        "translation": "We need to mark the outdated API endpoints as 'deprecated'."
+      },
+      {
+        "sentence": "Ein Semikolon kennzeichnet in vielen Programmiersprachen das Ende einer Anweisung.",
+        "translation": "In many programming languages, a semicolon marks the end of a statement."
+      },
+      {
+        "sentence": "Diese Innovation kennzeichnet einen wichtigen Meilenstein in unserer Produktentwicklung.",
+        "translation": "This innovation marks an important milestone in our product development."
+      }
+    ],
+    "tips": "Bu kelime 'Kennzeichen' (plaka/işaret) kökünden gelir. Yazılım dünyasında özellikle kod parçalarını etiketlerken (mark/tag) veya bir sistemin tipik özelliklerini belirtirken kullanılır."
+  },
+  {
+    "id": 20,
+    "word": "Nichtberücksichtigung",
+    "article": "die",
+    "type": "noun",
+    "meanings": {
+      "tr": "dikkate almama, göz ardı etme, ihmal",
+      "de": "das Außerachtlassen oder Nichtbeachten einer Sache oder Person"
+    },
+    "synonyms": [
+      "Ignorieren",
+      "Missachtung",
+      "Vernachlässigung"
+    ],
+    "antonyms": [
+      "Berücksichtigung",
+      "Beachtung",
+      "Einbeziehung"
+    ],
+    "examples": [
+      {
+        "sentence": "Die Nichtberücksichtigung von Edge-Cases führte zu einem Systemabsturz.",
+        "translation": "The failure to consider edge cases led to a system crash."
+      },
+      {
+        "sentence": "Die Nichtberücksichtigung der Coding-Standards wird im Code-Review kritisiert.",
+        "translation": "The disregard for coding standards is criticized in the code review."
+      },
+      {
+        "sentence": "Trotz der Nichtberücksichtigung seiner Vorschläge arbeitete er weiter am Projekt.",
+        "translation": "Despite the fact that his suggestions were not taken into account, he continued working on the project."
+      }
+    ],
+    "tips": "Almanca'da 'Nicht-' ön eki kelimeye olumsuzluk katar. 'Berücksichtigen' (dikkate almak) fiilinden türetilen bu isim, teknik dokümanlarda bir parametrenin veya kuralın atlandığını belirtmek için kullanılır."
+  },
+  {
+    "id": 21,
+    "word": "nicht berücksichtigen",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "dikkate almamak, göz ardı etmek, hesaba katmamak",
+      "de": "etwas bei seinen Planungen oder Überlegungen nicht mit einbeziehen"
+    },
+    "synonyms": [
+      "ignorieren",
+      "übergehen",
+      "vernachlässigen",
+      "auslassen"
+    ],
+    "antonyms": [
+      "berücksichtigen",
+      "beachten",
+      "einplanen"
+    ],
+    "examples": [
+      {
+        "sentence": "Wir dürfen die Latenzzeiten bei der Datenbankabfrage nicht berücksichtigen, wenn wir nur die CPU-Last messen wollen.",
+        "translation": "We should not take database latency into account if we only want to measure CPU load."
+      },
+      {
+        "sentence": "Der Compiler wird diese Warnungen nicht berücksichtigen, wenn das Flag gesetzt ist.",
+        "translation": "The compiler will ignore these warnings if the flag is set."
+      },
+      {
+        "sentence": "Es ist riskant, die Sicherheitsanforderungen im Entwurf nicht zu berücksichtigen.",
+        "translation": "It is risky not to take the security requirements into account in the design."
+      }
+    ],
+    "tips": "Bu aslında 'berücksichtigen' fiilinin 'nicht' ile olumsuzlanmış halidir. Yazılımda 'ignore' veya 'skip' anlamında, özellikle konfigürasyonlarda veya hata ayıklama süreçlerinde sıkça karşınıza çıkar."
+  },
+  {
+    "id": 22,
+    "word": "Benachteiligung",
+    "article": "die",
+    "type": "noun",
+    "meanings": {
+      "tr": "mağduriyet, haksızlık, dezavantajlı duruma düşürme, ayrımcılık",
+      "de": "das Zurücksetzen oder Schlechterstellen einer Person oder Gruppe gegenüber anderen"
+    },
+    "synonyms": [
+      "Diskriminierung",
+      "Beeinträchtigung",
+      "Ungerechtigkeit"
+    ],
+    "antonyms": [
+      "Bevorzugung",
+      "Förderung",
+      "Gleichbehandlung"
+    ],
+    "examples": [
+      {
+        "sentence": "Algorithmen müssen regelmäßig auf eine mögliche Benachteiligung bestimmter Nutzergruppen geprüft werden.",
+        "translation": "Algorithms must be regularly checked for potential discrimination against certain user groups."
+      },
+      {
+        "sentence": "Die Benachteiligung von Remote-Mitarbeitern bei Beförderungen sollte im Unternehmen vermieden werden.",
+        "translation": "Disadvantage for remote employees regarding promotions should be avoided within the company."
+      },
+      {
+        "sentence": "Trotz seiner Qualifikationen erfuhr er eine Benachteiligung im Bewerbungsprozess.",
+        "translation": "Despite his qualifications, he experienced a disadvantage in the application process."
+      }
+    ],
+    "tips": "'Teil' (parça/pay) kökünden gelir. Birine hak ettiği 'payı' vermemek veya onu dezavantajlı duruma düşürmek anlamındadır. Özellikle 'Ethical AI' ve 'Diversity in Tech' konularında sıkça duyarsınız."
+  },
+  {
+    "id": 23,
+    "word": "einschränken",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "kısıtlamak, sınırlamak, daraltmak",
+      "de": "etwas auf ein geringeres Maß reduzieren oder Grenzen setzen"
+    },
+    "synonyms": [
+      "limitieren",
+      "begrenzen",
+      "reduzieren",
+      "drosseln"
+    ],
+    "antonyms": [
+      "ausweiten",
+      "erweitern",
+      "fördern"
+    ],
+    "examples": [
+      {
+        "sentence": "Wir müssen die Zugriffsrechte für neue Benutzer vorerst einschränken.",
+        "translation": "We need to restrict the access rights for new users for now."
+      },
+      {
+        "sentence": "Die Firewall kann den eingehenden Traffic auf bestimmte IP-Adressen einschränken.",
+        "translation": "The firewall can restrict incoming traffic to specific IP addresses."
+      },
+      {
+        "sentence": "Durch das Refactoring konnten wir den Speicherverbrauch der App erheblich einschränken.",
+        "translation": "By refactoring, we were able to significantly limit the app's memory consumption."
+      }
+    ],
+    "tips": "Yazdığın kelime aslında 'einschränken' (Schranke = bariyer/engel kökünden). Yazılımda 'limit' veya 'restrict' anlamında, özellikle API kotaları veya kullanıcı yetkileri (permissions) söz konusu olduğunda her gün duyarsın."
+  },
+  {
+    "id": 24,
+    "word": "Sachverhalt",
+    "article": "der",
+    "type": "noun",
+    "meanings": {
+      "tr": "olayların durumu, gerçek durum, vaka, meselenin içyüzü",
+      "de": "die Gesamtheit der Tatsachen, die einen bestimmten Fall oder eine Angelegenheit betreffen"
+    },
+    "synonyms": [
+      "Tatbestand",
+      "Situation",
+      "Faktenlage",
+      "Umstand"
+    ],
+    "antonyms": [
+      "Fiktion",
+      "Vermutung",
+      "Irrtum"
+    ],
+    "examples": [
+      {
+        "sentence": "Nach der Analyse der Logs wurde der Sachverhalt für das Team endlich klarer.",
+        "translation": "After analyzing the logs, the facts of the case finally became clearer for the team."
+      },
+      {
+        "sentence": "Wir müssen den Sachverhalt im Jira-Ticket detailliert beschreiben, damit die Entwickler ihn reproduzieren können.",
+        "translation": "We need to describe the facts of the matter in the Jira ticket in detail so that the developers can reproduce it."
+      },
+      {
+        "sentence": "Der rechtliche Sachverhalt bezüglich der Open-Source-Lizenzen muss noch geprüft werden.",
+        "translation": "The legal facts regarding the open-source licenses still need to be reviewed."
+      }
+    ],
+    "tips": "'Sache' (şey/mesele) ve 'Verhalten' (durum/davranış) kelimelerinin birleşimidir. Bir hatanın (bug) nasıl meydana geldiğini veya bir sistemin neden çöktüğünü açıklarken 'işin aslı/mevcut durum' anlamında kullanılır."
+  },
+  {
+    "id": 25,
+    "word": "sich auswirken",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "etki etmek, etkisini göstermek, sonuç doğurmak",
+      "de": "eine bestimmte Wirkung oder Folge auf etwas oder jemanden haben"
+    },
+    "synonyms": [
+      "beeinflussen",
+      "bewirken",
+      "folgen",
+      "resultieren"
+    ],
+    "antonyms": [
+      "wirkungslos bleiben",
+      "unverändert bleiben"
+    ],
+    "examples": [
+      {
+        "sentence": "Die Änderungen am Datenmodell wirken sich direkt auf die Performance der API aus.",
+        "translation": "The changes to the data model directly affect the performance of the API."
+      },
+      {
+        "sentence": "Wie wird sich das neue Update auf die bestehenden Benutzerkonten auswirken?",
+        "translation": "How will the new update affect the existing user accounts?"
+      },
+      {
+        "sentence": "Ein Mangel an Dokumentation kann sich negativ auf die Einarbeitungszeit neuer Entwickler auswirken.",
+        "translation": "A lack of documentation can have a negative impact on the onboarding time for new developers."
+      }
+    ],
+    "tips": "Bu fiil bir 'trennbares Verb'dir (ayrılabilir fiil), yani 'aus-' eki cümlenin sonuna gider. Yazılımda bir değişikliğin (change) sistemin geri kalanı üzerindeki etkisini (impact) tartışırken 'auf etwas (Akkusativ) auswirken' kalıbıyla kullanılır."
+  },
+  {
+    "id": 26,
+    "word": "erheben",
+    "article": null,
+    "type": "verb",
+    "meanings": {
+      "tr": "toplamak (veri), talep etmek (ücret), yükseltmek, (itiraz) etmek",
+      "de": "Daten sammeln; eine Gebühr fordern; etwas in die Höhe heben; Einspruch einlegen"
+    },
+    "synonyms": [
+      "sammeln",
+      "erfassen",
+      "einfordern",
+      "aufstellen"
+    ],
+    "antonyms": [
+      "senken",
+      "verwerfen",
+      "ignorieren"
+    ],
+    "examples": [
+      {
+        "sentence": "In dieser Phase des Projekts werden die Nutzerdaten anonymisiert erhoben.",
+        "translation": "In this phase of the project, user data is collected anonymously."
+      },
+      {
+        "sentence": "Der Kunde hat Einspruch gegen die hohen Wartungskosten erhoben.",
+        "translation": "The customer has raised an objection against the high maintenance costs."
+      },
+      {
+        "sentence": "Wir müssen sicherstellen, dass nur die für die App notwendigen Metriken erhoben werden.",
+        "translation": "We must ensure that only the metrics necessary for the app are collected."
+      }
+    ],
+    "tips": "Yazılım dünyasında en çok 'Datenerhebung' (veri toplama) bağlamında karşınıza çıkar. Eğer bir veri tabanı veya log sistemi için veri çekiliyorsa 'erheben' fiili kullanılır. Kelime düzensizdir: erheben - erhob - erhoben."
   }
 ]

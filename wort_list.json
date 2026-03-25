@@ -719,6 +719,33 @@
     }
   ],
   "tips": "Yazılımda bu kelimeyi en çok 'Rechte vergeben' (yetki vermek) veya 'Aufgaben vergeben' (görev dağıtmak) kalıplarında görürsünüz. Ayrıca bir API'den dönen hata mesajlarında 'vergeben' kelimesini bir ID'nin zaten kullanımda (already assigned) olduğunu belirtmek için de görebilirsiniz."
-}
+},
+  {
+    "id": 34,
+    "word": "hinweg",
+    "article": null,
+    "type": "adverb",
+    "meanings": {
+      "tr": "bir şeyin üzerinden, ötesine, boyunca (zaman veya mekan)",
+      "de": "über etwas hinaus, über eine Zeitspanne oder ein Hindernis hin"
+    },
+    "synonyms": ["vorbei", "darüber"],
+    "antonyms": ["herbei", "hier"],
+    "examples": [
+      {
+        "sentence": "Wir müssen über die Legacy-Code-Probleme hinwegsehen, um das Release pünktlich abzuschließen.",
+        "translation": "We have to overlook the legacy code issues to complete the release on time."
+      },
+      {
+        "sentence": "Die Daten wurden über Jahre hinweg in einer veralteten Datenbank gespeichert.",
+        "translation": "The data was stored in an outdated database over many years."
+      },
+      {
+        "sentence": "Gehen Sie über die Fehlermeldung hinweg, das System wird sich automatisch neu starten.",
+        "translation": "Ignore the error message; the system will restart automatically."
+      }
+    ],
+    "tips": "'Hinweg' genellikle 'über ... hinweg' kalıbıyla kullanılır. Yazılım dünyasında özellikle 'über Fehler hinwegsehen' (hataları görmezden gelmek) veya zaman süreçlerini belirtirken 'Jahre hinweg' (yıllar boyunca) şeklinde karşınıza çıkar."
+  }
 
 ]

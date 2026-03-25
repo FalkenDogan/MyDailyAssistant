@@ -11,8 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String botToken  = System.getenv("TELEGRAM_TOKEN");
-        String chatId    = System.getenv("TELEGRAM_CHAT_ID");
+        String botToken = System.getenv("TELEGRAM_TOKEN");
+        String chatId = System.getenv("TELEGRAM_CHAT_ID");
 
         if (botToken == null || botToken.isBlank() || chatId == null || chatId.isBlank()) {
             System.err.println("HATA: TELEGRAM_TOKEN veya TELEGRAM_CHAT_ID environment variable tanımlı değil!");
@@ -20,8 +20,8 @@ public class Main {
         }
 
         String city = "Krefeld";
-        double lat  = 51.33;
-        double lon  = 6.56;
+        double lat = 51.33;
+        double lon = 6.56;
 
         try {
             // ────────────────────────────────────────────────
@@ -37,11 +37,11 @@ public class Main {
                     .get("data").getAsJsonObject()
                     .get("timings").getAsJsonObject();
 
-            String fajr    = prayerData.get("Fajr").getAsString();
-            String dhuhr   = prayerData.get("Dhuhr").getAsString();
-            String asr     = prayerData.get("Asr").getAsString();
+            String fajr = prayerData.get("Fajr").getAsString();
+            String dhuhr = prayerData.get("Dhuhr").getAsString();
+            String asr = prayerData.get("Asr").getAsString();
             String maghrib = prayerData.get("Maghrib").getAsString();
-            String isha    = prayerData.get("Isha").getAsString();
+            String isha = prayerData.get("Isha").getAsString();
 
             // ────────────────────────────────────────────────
             // 2. Hava durumu
@@ -56,9 +56,9 @@ public class Main {
             // ────────────────────────────────────────────────
             // 3. Günlük Kur'an-ı Kerim Meali
             // ────────────────────────────────────────────────
-            int kuranSayfaNo  = KuranMealServisi.calculateDailyPageNumber();
+            int kuranSayfaNo = KuranMealServisi.calculateDailyPageNumber();
             String kuranMeali = KuranMealServisi.dailyKuranPage();
-            String hadisText  = HadisServisi.buildDailyHadisText(kuranSayfaNo);
+            String hadisText = HadisServisi.buildDailyHadisText(kuranSayfaNo);
 
             // ────────────────────────────────────────────────
             // 4. Günlük Almanca Kelime
@@ -68,9 +68,9 @@ public class Main {
             // ────────────────────────────────────────────────
             // 5. Sınav geri sayım
             // ────────────────────────────────────────────────
-            LocalDate today     = LocalDate.now();
-            LocalDate examDate  = LocalDate.of(2026, 4, 28);
-            long gunKaldi       = ChronoUnit.DAYS.between(today, examDate);
+            LocalDate today = LocalDate.now();
+            LocalDate examDate = LocalDate.of(2026, 4, 28);
+            long gunKaldi = ChronoUnit.DAYS.between(today, examDate);
 
             // ────────────────────────────────────────────────
             // 6. Mesaj oluştur
@@ -80,6 +80,7 @@ public class Main {
                             "🎯 *SINAV DURUMU*\n" +
                             "🏁 Büyük sınava tam *%d gün* kaldı!\n" +
                             "🚀 Odaklanmaya devam et.\n\n" +
+                            "🤲 Günlük 100 Salavat ve 100 İstiğfar ile sınav yolculuğunu bereketlendir.\n\n" +
                             "☁️ *Hava Durumu (%s):* %s\n\n" +
                             "🕋 *Namaz Vakitleri (Krefeld):*\n" +
                             "🌅 İmsak:   %s\n" +

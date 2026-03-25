@@ -495,5 +495,230 @@
       }
     ],
     "tips": "Yazılım dünyasında en çok 'Datenerhebung' (veri toplama) bağlamında karşınıza çıkar. Eğer bir veri tabanı veya log sistemi için veri çekiliyorsa 'erheben' fiili kullanılır. Kelime düzensizdir: erheben - erhob - erhoben."
-  }
+  },
+  {
+  "id": 27,
+  "word": "angreifen",
+  "article": null,
+  "type": "verb",
+  "meanings": {
+    "tr": "saldırmak, ele almak, işe koyulmak, (teknik) aşındırmak",
+    "de": "etwas in Angriff nehmen, jemanden attackieren veya eine Substanz chemisch beschädigen"
+  },
+  "synonyms": [
+    "attackieren",
+    "anpacken",
+    "beginnen",
+    "korrodieren"
+  ],
+  "antonyms": [
+    "verteidigen",
+    "schützen",
+    "beenden"
+  ],
+  "examples": [
+    {
+      "sentence": "Wir müssen das Refactoring der Legacy-Codebasis nächste Woche endlich angreifen.",
+      "translation": "We finally have to tackle the refactoring of the legacy codebase next week."
+    },
+    {
+      "sentence": "Hacker versuchen ständig, die Firewall des Unternehmens anzugreifen.",
+      "translation": "Hackers are constantly trying to attack the company's firewall."
+    },
+    {
+      "sentence": "Nach der Pause werden wir die neuen User Stories im Sprint-Backlog angreifen.",
+      "translation": "After the break, we will tackle the new user stories in the sprint backlog."
+    }
+  ],
+  "tips": "Yazılım dünyasında 'angreifen' genellikle bir sorunu çözmeye başlamak veya zorlu bir görevi (task) 'ele almak' anlamında kullanılır. 'In Angriff nehmen' kalıbıyla benzerlik gösterir."
+},
+{
+  "id": 28,
+  "word": "erschaffen",
+  "article": null,
+  "type": "verb",
+  "meanings": {
+    "tr": "yaratmak, vucuda getirmek, meydana getirmek",
+    "de": "etwas Neues hervorbringen oder ins Leben rufen"
+  },
+  "synonyms": [
+    "kreieren",
+    "erzeugen",
+    "generieren",
+    "gründen"
+  ],
+  "antonyms": [
+    "zerstören",
+    "vernichten",
+    "löschen"
+  ],
+  "examples": [
+    {
+      "sentence": "Wir müssen eine skalierbare Architektur erschaffen, die Millionen von Anfragen gleichzeitig verarbeiten kann.",
+      "translation": "We need to create a scalable architecture that can handle millions of requests simultaneously."
+    },
+    {
+      "sentence": "Mit diesem Framework lassen sich komplexe Benutzeroberflächen in kürzester Zeit erschaffen.",
+      "translation": "With this framework, complex user interfaces can be created in a very short time."
+    },
+    {
+      "sentence": "Der Künstler wollte ein Werk erschaffen, das die Grenzen zwischen Realität und Virtualität verwischt.",
+      "translation": "The artist wanted to create a work that blurs the boundaries between reality and virtuality."
+    }
+  ],
+  "tips": "'Erschaffen' daha çok sanatsal veya büyük çaplı, vizyoner bir yaratım süreci için kullanılır. Yazılımda 'bir sistem mimarisi oluşturmak' gibi daha 'grand' durumlar için tercih edilir; basit nesneler için 'erstellen' daha yaygındır."
+},
+{
+  "id": 29,
+  "word": "ertragen",
+  "article": null,
+  "type": "verb",
+  "meanings": {
+    "tr": "katlanmak, tahammül etmek, dayanmak",
+    "de": "eine unangenehme Situation oder einen Zustand aushalten"
+  },
+  "synonyms": [
+    "aushalten",
+    "erdulden",
+    "tolerieren"
+  ],
+  "antonyms": [
+    "verweigern",
+    "aufgeben",
+    "ablehnen"
+  ],
+  "examples": [
+    {
+      "sentence": "Unser System muss hohe Lastspitzen ertragen können, ohne abzustürzen.",
+      "translation": "Our system must be able to endure high load peaks without crashing."
+    },
+    {
+      "sentence": "Die Entwickler mussten den Druck vor dem Release-Termin geduldig ertragen.",
+      "translation": "The developers had to patiently endure the pressure before the release deadline."
+    },
+    {
+      "sentence": "Es ist schwer zu ertragen, wenn der Build-Prozess ständig wegen kleiner Fehler fehlschlägt.",
+      "translation": "It is hard to endure when the build process constantly fails due to minor errors."
+    }
+  ],
+  "tips": "Teknik bağlamda bir sistemin 'yük altında kalması' (stress test gibi) durumlarında 'standhalten' daha yaygın olsa da, 'ertragen' daha çok sabır ve tahammül gerektiren durumları ifade eder."
+},
+{
+  "id": 30,
+  "word": "etablieren",
+  "article": null,
+  "type": "verb",
+  "meanings": {
+    "tr": "kurmak, yerleştirmek, kabul ettirmek, (piyasada/sektörde) sağlam bir yer edinmek",
+    "de": "etwas dauerhaft einrichten, gründen oder in einem bestimmten Bereich festigen und Anerkennung verschaffen"
+  },
+  "synonyms": [
+    "einführen",
+    "gründen",
+    "festigen",
+    "einrichten"
+  ],
+  "antonyms": [
+    "abschaffen",
+    "auflösen",
+    "stürzen"
+  ],
+  "examples": [
+    {
+      "sentence": "Wir müssen einen standardisierten Prozess für Code-Reviews etablieren.",
+      "translation": "We need to establish a standardized process for code reviews."
+    },
+    {
+      "sentence": "Das Startup konnte sich schnell als Marktführer im Bereich KI etablieren.",
+      "translation": "The startup was able to quickly establish itself as a market leader in the field of AI."
+    },
+    {
+      "sentence": "Es ist schwierig, eine neue Programmiersprache in einem konservativen Unternehmen zu etablieren.",
+      "translation": "It is difficult to establish a new programming language in a conservative company."
+    }
+  ],
+  "tips": "'Etablieren' kelimesini 'settle in' veya 'set up' gibi düşünebilirsin. Özellikle iş dünyasında bir kuralın veya teknolojinin 'oturtulması' anlamında sıkça kullanılır. Dönüşlü hali olan 'sich etablieren', bir kişinin veya şirketin sektörde yer edinmesi demektir."
+},
+{
+  "id": 31,
+  "word": "Vorgehensweisen",
+  "article": "die",
+  "type": "noun",
+  "meanings": {
+    "tr": "Yöntemler, izlenen yollar, prosedürler",
+    "de": "Art und Weise, wie man bei der Durchführung von etwas Bestimmtem vorgeht"
+  },
+  "synonyms": ["Methoden", "Verfahrensweisen", "Strategien"],
+  "antonyms": ["Planlosigkeit", "Willkür"],
+  "examples": [
+    {
+      "sentence": "Wir müssen unsere Vorgehensweisen beim Code-Review standardisieren, um die Qualität zu sichern.",
+      "translation": "We need to standardize our procedures during code reviews to ensure quality."
+    },
+    {
+      "sentence": "Agile Vorgehensweisen wie Scrum helfen Teams, flexibler auf Anforderungen zu reagieren.",
+      "translation": "Agile methodologies like Scrum help teams respond more flexibly to requirements."
+    },
+    {
+      "sentence": "Es gibt verschiedene Vorgehensweisen, um dieses mathematische Problem zu lösen.",
+      "translation": "There are different approaches to solve this mathematical problem."
+    }
+  ],
+  "tips": "Bu kelime 'vorgehen' (ilerlemek/hareket etmek) fiilinden türemiştir. Yazılım dünyasında 'Methodik' veya 'Approach' karşılığı olarak sıkça karşınıza çıkar. Çoğul kullanımı (Vorgehensweisen), farklı stratejileri kıyaslarken çok yaygındır."
+},
+{
+  "id": 32,
+  "word": "praxistauglich",
+  "article": null,
+  "type": "adj",
+  "meanings": {
+    "tr": "pratik, kullanışlı, uygulamaya uygun",
+    "de": "für die Anwendung in der Praxis geeignet; praktikabel"
+  },
+  "synonyms": ["praktikabel", "anwendbar", "nutzbar"],
+  "antonyms": ["theoretisch", "unpraktisch", "untauglich"],
+  "examples": [
+    {
+      "sentence": "Diese neue API-Architektur ist zwar elegant, aber für unser aktuelles Legacy-System nicht praxistauglich.",
+      "translation": "This new API architecture is elegant, but it is not practical for our current legacy system."
+    },
+    {
+      "sentence": "Wir benötigen eine praxistaugliche Lösung für das Deployment am Wochenende.",
+      "translation": "We need a practical solution for the deployment over the weekend."
+    },
+    {
+      "sentence": "Sein Vorschlag klingt in der Theorie gut, ist aber im Arbeitsalltag kaum praxistauglich.",
+      "translation": "His proposal sounds good in theory, but it is hardly practical in everyday work."
+    }
+  ],
+  "tips": "Bu kelime 'Praxis' (uygulama/pratik) ve 'tauglich' (uygun/elverişli) kelimelerinin birleşimidir. Bir kütüphane veya framework seçerken sadece 'güzel' değil, projenin gerçek şartlarında 'çalışabilir' olduğunu belirtmek için bu sıfatı kullanabilirsiniz."
+},
+{
+  "id": 33,
+  "word": "vergeben",
+  "article": null,
+  "type": "verb",
+  "meanings": {
+    "tr": "tahsis etmek, vermek (görev/izin), affetmek",
+    "de": "etwas (einen Auftrag, eine Stelle) an jemanden geben; jemanden eine Schuld nachsehen"
+  },
+  "synonyms": ["erteilen", "zuteilen", "verzeihen"],
+  "antonyms": ["entziehen", "behalten", "nachtragen"],
+  "examples": [
+    {
+      "sentence": "Wir müssen die Zugriffsrechte für die Datenbank neu vergeben.",
+      "translation": "We need to reassign the access rights for the database."
+    },
+    {
+      "sentence": "Der Product Owner hat die Prioritäten für das nächste Sprint-Backlog bereits vergeben.",
+      "translation": "The Product Owner has already assigned the priorities for the next sprint backlog."
+    },
+    {
+      "sentence": "Obwohl er einen Fehler im Main-Branch gemacht hat, wurde ihm sofort vergeben.",
+      "translation": "Although he made a mistake in the main branch, he was forgiven immediately."
+    }
+  ],
+  "tips": "Yazılımda bu kelimeyi en çok 'Rechte vergeben' (yetki vermek) veya 'Aufgaben vergeben' (görev dağıtmak) kalıplarında görürsünüz. Ayrıca bir API'den dönen hata mesajlarında 'vergeben' kelimesini bir ID'nin zaten kullanımda (already assigned) olduğunu belirtmek için de görebilirsiniz."
+}
+
 ]
